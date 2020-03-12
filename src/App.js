@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./bootstrap.min.css";
 
 import AddNote from "./components/AddNote";
-import Note from "./components/Note";
 import Notes from "./components/Notes";
 
 // import uuid from "uuid";
@@ -28,7 +27,7 @@ function App() {
   return (
     <div className="container" style={{ marginTop: "10vh" }}>
       <h1 style={titleStyle}>My Notes</h1>
-      <div className="d-flex" style={noteContainerStyle}>
+      <div className="d-flex" style={{margin: '15px'}}>
         <Notes notes={state.notes} />
       </div>
       <AddNote />
@@ -39,10 +38,6 @@ function App() {
 const titleStyle = {
   textAlign: "center",
   fontSize: "4rem"
-};
-
-const noteContainerStyle = {
-  margin: "15px"
 };
 
 export default App;
