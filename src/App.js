@@ -42,9 +42,7 @@ function App() {
   return (
     <div className="container" style={{ marginTop: "10vh" }}>
       <h1 style={titleStyle}>My Notes</h1>
-      <div className="d-flex" style={{ margin: "15px" }}>
-        <Notes notes={state.notes} delNote={delNote} />
-      </div>
+      <Notes notes={state.notes} delNote={delNote} />
       <AddNote addNote={addNote} />
     </div>
   );
