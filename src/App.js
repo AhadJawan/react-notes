@@ -4,7 +4,7 @@ import "./bootstrap.min.css";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [state, setState] = useState({
@@ -12,7 +12,7 @@ function App() {
       {
         id: uuidv4(),
         data: "The Earth is not flat"
-      }, 
+      },
       {
         id: uuidv4(),
         data: "It's not round either"
@@ -28,16 +28,22 @@ function App() {
     const newNote = {
       id: uuidv4(),
       data
-    }
+    };
     // newNote.id = uuidv4(); //state.notes[state.notes.length].id + 1;
-    setState({notes: [...state.notes, newNote]});
-  }
+    setState({ notes: [...state.notes, newNote] });
+  };
+
+  const delNote = id => {
+    setState({
+      notes: [...state.notes.filter(note => note.id != id)]
+    });
+  };
 
   return (
     <div className="container" style={{ marginTop: "10vh" }}>
       <h1 style={titleStyle}>My Notes</h1>
-      <div className="d-flex" style={{margin: '15px'}}>
-        <Notes notes={state.notes} />
+      <div className="d-flex" style={{ margin: "15px" }}>
+        <Notes notes={state.notes} delNote={delNote} />
       </div>
       <AddNote addNote={addNote} />
     </div>

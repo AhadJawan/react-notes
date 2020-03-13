@@ -1,0 +1,7 @@
+.note-enter {
+    opacity: 0;
+}
+
+.note-exit {
+    opacity: 1;
+}
