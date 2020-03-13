@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./bootstrap.min.css";
 
 import AddNote from "./components/AddNote";
@@ -6,30 +6,35 @@ import Notes from "./components/Notes";
 
 import { v4 as uuidv4 } from "uuid";
 
+const sampleNotes = {
+  notes: [
+    {
+      id: uuidv4(),
+      data: "The Earth is not flat"
+    },
+    {
+      id: uuidv4(),
+      data: "It's not round either"
+    },
+    {
+      id: uuidv4(),
+      data: "It's more like a donut"
+    }
+  ]
+};
+
 function App() {
-  const [state, setState] = useState({
-    notes: [
-      {
-        id: uuidv4(),
-        data: "The Earth is not flat"
-      },
-      {
-        id: uuidv4(),
-        data: "It's not round either"
-      },
-      {
-        id: uuidv4(),
-        data: "It's more like a donut"
-      }
-    ]
-  });
+  const [state, setState] = useState(
+    localStorage.getItem("notes")
+      ? JSON.parse(localStorage.getItem("notes"))
+      : sampleNotes
+  );
 
   const addNote = data => {
     const newNote = {
       id: uuidv4(),
       data
     };
-    // newNote.id = uuidv4(); //state.notes[state.notes.length].id + 1;
     setState({ notes: [...state.notes, newNote] });
   };
 
@@ -38,6 +43,10 @@ function App() {
       notes: [...state.notes.filter(note => note.id != id)]
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(state));
+  });
 
   return (
     <div className="container" style={{ marginTop: "10vh" }}>
