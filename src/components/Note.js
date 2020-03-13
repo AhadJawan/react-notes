@@ -28,8 +28,7 @@ const cardStyle = {
   background:
     "repeating-linear-gradient(#FFFFF8, #FFFFF8 10px, #BCBAFF 10px, #BCBAFF 12px)",
   padding: "10px",
-  position: "relative",
-  maxWidth: '20%'
+  position: "relative"
 };
 
 const deleteBtnStyle = {

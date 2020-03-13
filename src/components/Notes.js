@@ -5,7 +5,7 @@ import "./styles/Note.css";
 
 export default function Notes(props) {
   return (
-      <TransitionGroup className="d-flex flex-wrap">
+      <TransitionGroup className="d-flex flex-wrap flex-column flex-md-row">
         {props.notes.map(note => {
           return (
             <CSSTransition
