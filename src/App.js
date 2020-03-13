@@ -4,25 +4,34 @@ import "./bootstrap.min.css";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
 
-// import uuid from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [state, setState] = useState({
     notes: [
       {
-        id: 1,
+        id: uuidv4(),
         data: "The Earth is not flat"
       }, 
       {
-        id: 2,
+        id: uuidv4(),
         data: "It's not round either"
       },
       {
-        id: 3,
+        id: uuidv4(),
         data: "It's more like a donut"
       }
     ]
   });
+
+  const addNote = data => {
+    const newNote = {
+      id: uuidv4(),
+      data
+    }
+    // newNote.id = uuidv4(); //state.notes[state.notes.length].id + 1;
+    setState({notes: [...state.notes, newNote]});
+  }
 
   return (
     <div className="container" style={{ marginTop: "10vh" }}>
@@ -30,7 +39,7 @@ function App() {
       <div className="d-flex" style={{margin: '15px'}}>
         <Notes notes={state.notes} />
       </div>
-      <AddNote />
+      <AddNote addNote={addNote} />
     </div>
   );
 }
