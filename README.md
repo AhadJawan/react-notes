@@ -9,6 +9,4 @@ With this project I've learned to
 * Implement animations in React
 * Create and deploy a development version of React
 * Adding external CSS and JS to React
-
-## TODO
-* Create some kind of front-end persistence; my first thought was using cookies but now I'm aiming towards local storage.
+* Using local storage to persist user notes. This was interesting since my first thought was to call localStorage.setItem() every time I updated the component's state with the useState hook. I soon discovered that useState is async and the local storage was being saved _before_ the state was updated. I fixed this by using the useEffect hook.
